@@ -26,5 +26,4 @@ public class MainController {
     public Mono<Message> save(@RequestBody Message message){
         return service.addOne(message);
     }
-
 }

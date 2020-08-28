@@ -20,9 +20,8 @@ public class MainPageUtilConfigRouter {
 
 
         return RouterFunctions
-                .route(predicate, handler::index)
-                .andRoute(
-                        RequestPredicates.GET("/"), handler::index);
+                .route(predicate, handler::sayHello)
+                .andRoute(RequestPredicates.GET("/").and(RequestPredicates.accept(MediaType.TEXT_HTML)), handler::index);
     }
 
 }

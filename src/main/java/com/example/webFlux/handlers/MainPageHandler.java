@@ -25,11 +25,12 @@ public class MainPageHandler  {
                 .body(messageFlux, Message.class);
     }
 
-    public Mono<ServerResponse> index (ServerRequest request){
-        String name = request.queryParam("user")
-                .orElse("Someone Else");
+    public Mono<ServerResponse> index(ServerRequest serverRequest) {
+        String user = serverRequest.queryParam("user")
+                .orElse("Nobody");
+
         return ServerResponse
                 .ok()
-                .render("index", Map.of("user",name));
+                .render("index", user);
     }
 }
