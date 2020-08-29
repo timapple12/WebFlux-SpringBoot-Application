@@ -2,10 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hi</title>
-
+    <title>WebFlux</title>
 </head>
 <body>
-
+    {{ user }}
+<form onsubmit="
+        var data = {
+            method: 'post',
+            headers: {
+                'Content-type':'application/x-www-form-urlencoded'
+            },
+            body: `username = ${this.username.value}&password = ${this.password.value}`
+        };
+       fetch('/login', data).then(result => result.text().then(text => console.log(text)))
+    return false;
+    ">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <input type="submit" name="Sign in">
+</form>
 </body>
 </html>
