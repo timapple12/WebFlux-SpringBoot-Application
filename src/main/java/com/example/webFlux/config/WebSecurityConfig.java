@@ -18,7 +18,7 @@ public class WebSecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();       /** DEPRECATED use in future encoding for MySQL like MD5*/
+        return NoOpPasswordEncoder.getInstance();       /** DEPRECATED use in future encoding for MySQL like MD5 */
     }
 
     @Bean
@@ -29,12 +29,13 @@ public class WebSecurityConfig {
                 .formLogin().and()
                 .httpBasic().disable()
                 .authorizeExchange()
-                .pathMatchers("/", "/login", "/register","/hello").permitAll()
+                .pathMatchers("/", "/login", "/favicon.ico").permitAll()
                 .pathMatchers("/main").hasRole("ADMIN")
-                .anyExchange().permitAll()
+                .anyExchange().authenticated()
                 .and()
                 .build();
     }
+
 
 
 }

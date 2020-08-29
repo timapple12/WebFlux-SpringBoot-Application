@@ -1,6 +1,7 @@
 package com.example.webFlux.handlers;
 
 import com.example.webFlux.domain.Message;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -9,6 +10,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Map;
+
 
 @Component
 public class MainPageHandler  {
@@ -31,6 +33,6 @@ public class MainPageHandler  {
 
         return ServerResponse
                 .ok()
-                .render("index", user);
+                .render("index", Map.of("user", user));
     }
 }
